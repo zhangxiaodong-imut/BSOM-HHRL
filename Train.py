@@ -94,7 +94,7 @@ class Train:
 
 popsizeList = [20, 30, 40, 50, 60]
 pruList = [10240, 20480, 40960, 81920, 163840]
-for pru in pruList:  # 裁剪请求大小
+for pru in range(5):  # 裁剪请求大小
     for popsize in range(5):  # 种群大小
         print("裁剪请求为{}，种群大小为{}\n".format(pruList[pru], popsizeList[popsize]))
         test = Train(pruList[pru], popsizeList[popsize])

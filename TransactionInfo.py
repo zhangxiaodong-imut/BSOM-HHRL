@@ -11,10 +11,10 @@ class TransactionInfo:
         self.path_trinfo = 'data/trinfo.txt'
         self.tau = 0.1
         self.max_speed = 20
-        self.u_sec = 0.25
+        self.u_cop = 0.25
         self.u_tim = 0.0028
         self.u_dis = 0.0003
-        self.u_net = 50
+        self.u_siz = 50
         self.u_sto = 100
         self.a = 0.1047
         self.b = 0.2583
@@ -76,9 +76,9 @@ class TransactionInfo:
             # print(i+1, Pr)
 
             for j in range(len(self.trInfo[i])):
-                sec = -np.exp(-self.u_sec * self.trInfo[i][j][4])  # 安全
+                sec = -np.exp(-self.u_cop * self.trInfo[i][j][4])  # 安全
                 tim = -np.exp(-self.u_tim * (currentTime - self.trInfo[i][j][1]))  # 时效性
-                net = -np.exp(-self.u_net * (1 / (Pr * self.trInfo[i][j][3])))  # 网络资源
+                net = -np.exp(-self.u_siz * (1 / (Pr * self.trInfo[i][j][3])))  # 网络资源
                 sto = np.exp(-self.u_sto * (1 / self.trInfo[i][j][3]))  # 存储资源
                 # U = self.a * sec + self.c * net + self.d * sto
                 # U = self.a * sec + self.b * tim + self.c * net + self.d * sto
